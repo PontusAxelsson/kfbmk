@@ -1,0 +1,67 @@
+@use './variables' as *;
+
+@function light-dark($light, $dark) {
+	// If light mode is --ON, we get the `initial` value thus the var() fallback is used, and the --OFF value is set to a whitespace, returning `$light  `. Vice-versa for dark mode.
+	@return var(--light, #{ $light }) var(--dark, #{ $dark });
+}
+
+:root {
+	/* Thanks Lea Verou! https://lea.verou.me/2020/10/the-var-space-hack-to-toggle-multiple-values-with-one-custom-property/ */
+	--ON: initial;
+	--OFF: ;
+}
+
+.theme-default,
+.theme-light {
+	--light: var(--ON);
+	--dark: var(--OFF);
+}
+
+.theme-dark {
+	--light: var(--OFF);
+	--dark: var(--ON);
+}
+
+@media (prefers-color-scheme: dark) {
+	.theme-default {
+		--light: var(--OFF);
+		--dark: var(--ON);
+	}
+}
+
+:root {
+	/* Define each variable in their light and dark mode */
+	--text: #{ light-dark(white, white) };
+	--bg: #{ light-dark($light-blue, $dark-blue) };
+	--accent: #{ light-dark(mix($light-blue, $dark-blue), mix($pink, $light-blue)) };
+	--link: #{ light-dark($light-link, $dark-link) };
+}
+
+body {
+	color: var(--text);
+	background: var(--bg);
+}
+
+/* Presentation */
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+}
+
+main {
+	text-align: center;
+}
+
+button {
+	width: 100%;
+}
+
+p {
+	padding: 1em;
+	border: 0.5em solid var(--accent, #808080);
+}
+
+a:any-link {
+	color: var(--link, blue);
+}

@@ -1,0 +1,8 @@
+@use '../../styles/variables' as *;
+
+.navigation:global(.navigation) {
+    background-color: aqua;
+}
+.newspaper{
+	height: 20px;
+}
