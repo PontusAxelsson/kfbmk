@@ -1,15 +1,29 @@
 import { Link } from "react-location";
 import styles from './Navigation.module.scss';
+import NewsPaper from "./icons/newspaper";
+import Shuttle from "./icons/shuttle";
+import MapLocation from "./icons/map-location";
 
 export const Navigation = () => {
 
 	return (
-		<div className={'navigation '+(styles.navigation||'')}>
-			<Link to="/info"> Info </Link>
+		<div className={`${styles.navigation} navigation`}>
+			<div className={styles.navbar}></div>
 			<Link to="/news">
-				<img className={styles.newspaper} src="/src/assets/icons/newspaper.svg" alt="newspaper_icon"/>
+				<div className={`${styles.navItem}`}>
+					<NewsPaper />
+				</div>
 			</Link>
-			<Link to="/map"> Find Here </Link>
+			<Link to="/info">
+				<div className={`${styles.navItem}`}>
+					<Shuttle />
+				</div>
+			</Link>
+			<Link to="/map">
+				<div className={`${styles.navItem}`}>
+					<MapLocation />
+				</div>
+			</Link>
 		</div>
 	)
 }
