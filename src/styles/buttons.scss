@@ -1,0 +1,32 @@
+button {
+	background-color: var(--text);
+	border: none;
+	color: var(--bg);
+	padding: .5em;
+	display: inline-block;
+	font-size: 1.2rem;
+	border-radius: .4em;
+	cursor: pointer;
+}
+button:hover {
+	background-color: var(--blue160);
+}
+
+button {
+	background-color: var(--text);
+	border: none;
+	color: var(--bg);
+	padding: .5em;
+	display: inline-block;
+	font-size: 1.2rem;
+	border-radius: .4em;
+}
+
+button.dark {
+	background-color: var(--bg);
+	color: var(--text);
+	transition: background-color .3s;
+}
+button.dark:hover {
+	background-color: var(--blue40);
+}

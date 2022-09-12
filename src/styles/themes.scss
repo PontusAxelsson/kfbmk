@@ -35,6 +35,9 @@
 	--bg: #{ light-dark($light-blue, $dark-blue) };
 	--accent: #{ light-dark(mix($light-blue, $dark-blue), mix($pink, $light-blue)) };
 	--link: #{ light-dark($light-link, $dark-link) };
+	--blue200: #{ light-dark($blue-200, $blue-0) };
+	--blue160: #{ light-dark($blue-160, $blue-40) };
+	--blue40: #{ light-dark($blue-40, $blue-160) };
 }
 
 body {
