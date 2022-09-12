@@ -10,8 +10,6 @@ const FindHereStore = create<InfoStore>(set => ({
 	toogleOpen: () => set(state => ({ userMenuOpen: !state.userMenuOpen })),
 }))
 
-
-
 export const FindHere = () => {
 	return (
 		<div onClick={FindHereStore((state)=>state.toogleOpen)}>

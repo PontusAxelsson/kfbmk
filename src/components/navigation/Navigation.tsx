@@ -5,25 +5,36 @@ import Shuttle from "./icons/shuttle";
 import MapLocation from "./icons/map-location";
 
 export const Navigation = () => {
+	const paths = [
+		{
+			to: "/news",
+			component: <NewsPaper />
+		},
+		{
+			to: "/info",
+			component: <Shuttle />
+		},
+		{
+			to: "/map",
+			component: <MapLocation />
+		},
+	]
 
 	return (
 		<div className={`${styles.navigation} navigation`}>
 			<div className={styles.navbar}></div>
-			<Link to="/news">
-				<div className={`${styles.navItem}`}>
-					<NewsPaper />
-				</div>
-			</Link>
-			<Link to="/info">
-				<div className={`${styles.navItem}`}>
-					<Shuttle />
-				</div>
-			</Link>
-			<Link to="/map">
-				<div className={`${styles.navItem}`}>
-					<MapLocation />
-				</div>
-			</Link>
+			{paths.map(({to, component}) => {
+				return (
+					<Link 
+						to = {to}
+						getActiveProps={() => ({ className: `${styles.active}` })}
+					>
+						<div className={`${styles.navItem}`}>
+							{component}
+						</div>
+					</Link>
+				)
+			})}
 		</div>
 	)
 }

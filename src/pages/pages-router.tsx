@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate } from "react-location";
 
 const Info = React.lazy(() => import("./info/Info"));
 const News = React.lazy(() => import("./news/News"));
@@ -16,5 +17,8 @@ export const PagesRoutes = [
 	{
 		path: '/map',
 		element: <FindHere />
+	},
+	{
+		element: <Navigate to="/info" />,
 	},
 ]

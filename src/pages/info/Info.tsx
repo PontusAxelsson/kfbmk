@@ -10,8 +10,6 @@ const useStore = create<InfoStore>(set => ({
 	toogleOpen: () => set(state => ({ userMenuOpen: !state.userMenuOpen })),
 }))
 
-
-
 export const Info = () => {
 	return (
 		<div onClick={useStore((state)=>state.toogleOpen)}>
