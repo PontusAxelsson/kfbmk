@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { PageTitle } from '../../components/page_title/PageTitle'
 
 interface InfoStore {
 	userMenuOpen: boolean,

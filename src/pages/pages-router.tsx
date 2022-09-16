@@ -1,24 +1,42 @@
 import React from "react";
-import { Navigate } from "react-location";
+import { Navigate, Route, Location } from "react-location";
 
 const Info = React.lazy(() => import("./info/Info"));
 const News = React.lazy(() => import("./news/News"));
 const FindHere = React.lazy(() => import("./find/FindHere"));
 
-export const PagesRoutes = [
+export interface AppRouteMeta {
+	title: string;
+}
+
+export const PagesRoutes: Route[] = [
+	{
+		path: '/',
+		element: <Navigate to="/info"/>,
+	},
 	{
 		path: '/info',
-		element: <Info />
+		element: <Info />,
+		meta: {
+			title: 'Allmän information'
+		}
 	},
 	{
 		path: '/news',
-		element: <News />
+		element: <News />,
+		meta: {
+			title: 'Nyheter'
+		}
 	},
 	{
 		path: '/map',
-		element: <FindHere />
+		element: <FindHere />,
+		meta: {
+			title: 'Hitta hit'
+		}
 	},
 	{
-		element: <Navigate to="/info" />,
+		path: '*',
+		element: <Navigate to="/info" />
 	},
 ]

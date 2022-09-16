@@ -3,6 +3,7 @@ import { auth } from "../../auth/firebase"
 import { useAuthUser } from "../../auth/react-query-firebase/auth"
 import create from 'zustand'
 import styles from './User.module.scss'
+import { PageTitle } from "../page_title/PageTitle";
 
 interface UserStore {
 	userMenuOpen: boolean,
@@ -18,7 +19,8 @@ export const UserMenu = () => {
 	const open = useStore(state => state.userMenuOpen)
 	if(!open) return null;
 	return (
-		<div className={styles.userMenu} onClick={(e)=>{e.stopPropagation()}}>HELLO</div>
+		<div className={styles.userMenu} onClick={(e)=>{e.stopPropagation()}}>
+		</div>
 	)
 }
 

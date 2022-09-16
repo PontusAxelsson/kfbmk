@@ -1,17 +1,13 @@
-import { MouseEvent } from 'react'
-import { Outlet, ReactLocation, Router } from 'react-location';
-import styles from './App.module.scss'
+import { Outlet, ReactLocation, Router, useMatches } from 'react-location';
 import { Navigation } from './components/navigation/Navigation';
 import { SignInButton } from './components/signin/SignInButton';
-import { PagesRoutes } from './pages/pages-router';
+import { PageTitle } from './components/page_title/PageTitle';
+import { AppRouteMeta, PagesRoutes } from './pages/pages-router';
+import styles from './App.module.scss'
 
-const toggleDarkMode = (e: MouseEvent):void => {
-const html = document.querySelector('html') as HTMLHtmlElement;
-html.classList.remove('theme-default')
-html.classList.toggle('theme-dark')
-}
 
 const App = () => {
+	const matches = useMatches();
 	const reactLocation = new ReactLocation();
 	return (
 		<Router
@@ -20,6 +16,7 @@ const App = () => {
 			<div className={ styles.loginButton }>
 				<SignInButton />
 			</div>
+			<PageTitle/>
 			<Navigation />
 			<Outlet />
 		</Router>
