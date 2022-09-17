@@ -1,0 +1,38 @@
+.button {
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	position: relative;
+	height: 2em;
+	width: 2em;
+	overflow: hidden;
+	transition: 
+		all .3s ease !important;
+	> * {
+		position: absolute;
+		white-space: nowrap;
+		transition: 
+			all .3s ease-in-out;
+	}
+	span {
+		right: 5.5em;
+		opacity: 0;
+	}
+	img {
+		left: 0em;
+		height: 1.2em;
+		opacity: 1;
+	}
+}
+.button:hover {
+	width: 5em;
+	span {
+		right: 0.5em;
+		opacity: 1;
+	}
+	img {
+		left: -5em;
+		opacity: 0;
+	}
+}

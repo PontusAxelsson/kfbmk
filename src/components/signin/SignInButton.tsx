@@ -1,7 +1,10 @@
-import styles from './Navigation.module.scss';
+import styles from './SignInButton.module.scss';
 
 export const SignInButton = () => {
-    return (
-        <button className="dark clickable">Logga in</button>
-    );
+	return (
+		<button className={`${styles.button} dark`}>
+			<span>Logga in</span>
+			<img src="src/assets/icons/lock.svg" alt="lock" />
+		</button>
+	);
 }
