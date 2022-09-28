@@ -1,11 +1,8 @@
 import create from 'zustand'
-import { collection } from "firebase/firestore";
-import { firebase } from "../../auth/firebase";
-import { useFirestoreQuery } from "../../auth/react-query-firebase/firestore";
-import { PageTitle } from "../../components/page_title/PageTitle";
 import { queryNews } from "../../services/news";
 import AddItem from "./add-item/add-item";
 import { NewsItem } from "./item/News_Item";
+import { LoginModal } from "../../components/login-modal/login-modal";
 
 interface NewsStore {
 	userMenuOpen: boolean,
@@ -33,6 +30,7 @@ export const News = () => {
 	
 	return (
 		<div>
+			<LoginModal/>
 			{query.data.docs.map((doc) =>
 				<NewsItem key={doc.id} id={doc.id}/>
 			)}
