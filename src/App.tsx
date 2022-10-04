@@ -1,21 +1,23 @@
-import { Outlet, ReactLocation, Router, useMatches } from 'react-location';
+import { Outlet, ReactLocation, Router } from 'react-location';
 import { Navigation } from './components/navigation/Navigation';
 import { SignInButton } from './components/signin/SignInButton';
 import { PageTitle } from './components/page_title/PageTitle';
-import { AppRouteMeta, PagesRoutes } from './pages/pages-router';
+import { PagesRoutes } from './pages/pages-router';
 import styles from './App.module.scss'
+import { LoginModal } from './components/login-modal/login-modal';
 
 
 const App = () => {
-	const matches = useMatches();
 	const reactLocation = new ReactLocation();
 	return (
 		<Router
-		location={reactLocation}
-		routes={PagesRoutes}>
+			location={reactLocation}
+			routes={PagesRoutes}
+		>
 			<div className={ styles.loginButton }>
 				<SignInButton />
 			</div>
+			<LoginModal />
 			<PageTitle/>
 			<Navigation />
 			<Outlet />

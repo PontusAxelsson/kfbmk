@@ -1,0 +1,21 @@
+.modalContainer {
+	color: black;
+}
+.row {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.emailContainer {
+	form {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	label {
+		display: flex;
+	}
+	input {
+		flex: 1 1 auto;
+	}
+}
