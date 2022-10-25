@@ -33,8 +33,10 @@
 	/* Define each variable in their light and dark mode */
 	--text: #{ light-dark(white, white) };
 	--bg: #{ light-dark($light-blue, $dark-blue) };
-	--accent: #{ light-dark(mix($light-blue, $dark-blue), mix($pink, $light-blue)) };
-	--link: #{ light-dark($light-link, $dark-link) };
+	--accent: #{ $yellow };
+	--secondary: #{ $teal };
+	// --accent: #{ light-dark(mix($light-blue, $dark-blue), mix($pink, $light-blue)) };
+	--link: #{ light-dark($light-link, $yellow) };
 	--blue200: #{ light-dark($blue-200, $blue-0) };
 	--blue160: #{ light-dark($blue-160, $blue-40) };
 	--blue40: #{ light-dark($blue-40, $blue-160) };
@@ -58,11 +60,6 @@ main {
 
 button {
 	width: 100%;
-}
-
-p {
-	padding: 1em;
-	border: 0.5em solid var(--accent, #808080);
 }
 
 a:any-link {

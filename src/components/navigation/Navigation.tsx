@@ -1,4 +1,4 @@
-import { Link } from "react-location";
+import { NavLink } from "react-router-dom";
 import styles from './Navigation.module.scss';
 import NewsPaper from "./icons/newspaper";
 import Shuttle from "./icons/shuttle";
@@ -26,15 +26,15 @@ export const Navigation = () => {
 			<div className={styles.navbar}></div>
 			{paths.map(({to, component}, key) => {
 				return (
-					<Link 
+					<NavLink 
 						key = {key}
 						to = {to}
-						getActiveProps={() => ({ className: `${styles.active}` })}
+						className={({isActive})=>(isActive?`${styles.active}`:'')}
 					>
 						<div className={`${styles.navItem}`}>
 							{component}
 						</div>
-					</Link>
+					</NavLink>
 				)
 			})}
 		</div>

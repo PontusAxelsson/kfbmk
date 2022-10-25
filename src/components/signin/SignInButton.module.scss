@@ -7,6 +7,7 @@
 	height: 2em;
 	width: 2em;
 	overflow: hidden;
+	margin: 0 !important;
 	transition: 
 		all .3s ease !important;
 	> * {
@@ -20,7 +21,7 @@
 		opacity: 0;
 	}
 	img {
-		left: 0em;
+		right: 0.4em;
 		height: 1.2em;
 		opacity: 1;
 	}
@@ -32,7 +33,7 @@
 		opacity: 1;
 	}
 	img {
-		left: -5em;
+		right: -5em;
 		opacity: 0;
 	}
 }

@@ -1,27 +1,59 @@
-import { Outlet, ReactLocation, Router } from 'react-location';
-import { Navigation } from './components/navigation/Navigation';
 import { SignInButton } from './components/signin/SignInButton';
 import { PageTitle } from './components/page_title/PageTitle';
-import { PagesRoutes } from './pages/pages-router';
 import styles from './App.module.scss'
-import { LoginModal } from './components/login-modal/login-modal';
+import { LoginModal, useLoginModalStore } from './components/login-modal/login-modal';
+import { Route, Routes, Navigate} from 'react-router-dom';
+import News from './pages/news/News';
+import Info from './pages/info/Info';
+import FindHere from './pages/find/FindHere';
+import { Navigation } from './components/navigation/Navigation';
+import { Suspense } from 'react';
 
+const Loading = () => (<div>...laddar</div>);
 
 const App = () => {
-	const reactLocation = new ReactLocation();
+	const isLoginModalOpen = useLoginModalStore(
+		({ isOpen }) => isOpen
+	)
 	return (
-		<Router
-			location={reactLocation}
-			routes={PagesRoutes}
-		>
-			<div className={ styles.loginButton }>
+		<div>
+			<div className={styles.loginButton}>
 				<SignInButton />
 			</div>
-			<LoginModal />
-			<PageTitle/>
+			{(isLoginModalOpen) ? <LoginModal />:''}
+			<PageTitle />
+			<Routes>
+				<Route
+					path="/info"
+					element= {
+						<Suspense fallback={<Loading />}>
+							<Info />
+						</Suspense>
+					}
+				/>
+				<Route
+					path="/news"
+					element= {
+						<Suspense fallback={<Loading />}>
+							<News />
+						</Suspense>
+					}
+				/>
+				<Route
+					path="/map"
+					element= {
+						<Suspense fallback={<Loading />}>
+							<FindHere />
+						</Suspense>
+					}
+				/>
+				<Route
+					path="*" 
+					element={<Navigate to="/info" replace />}
+				/>
+			</Routes>
 			<Navigation />
-			<Outlet />
-		</Router>
+		</div>
 	)
 }
 

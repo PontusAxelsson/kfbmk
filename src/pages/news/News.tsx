@@ -30,7 +30,6 @@ export const News = () => {
 	
 	return (
 		<div>
-			<LoginModal/>
 			{query.data.docs.map((doc) =>
 				<NewsItem key={doc.id} id={doc.id}/>
 			)}

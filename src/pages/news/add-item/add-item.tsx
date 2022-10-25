@@ -1,43 +1,29 @@
-import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
-import { $getRoot, $getSelection, EditorState, EditorThemeClasses } from "lexical";
-import TextEditor from "../../../components/text-editor/text-editor"
-
-let theme: EditorThemeClasses = {
-	heading: {h1:'H1'}
-}
-
-// When the editor changes, you can get notified via the
-// LexicalOnChangePlugin!
-function onChange(editorState: EditorState) {
-	editorState.read(() => {
-		// Read the contents of the EditorState here.
-		const root = $getRoot();
-		const selection = $getSelection();
-
-		console.log(root, selection);
-	});
-}
-
-function onError(error: Error) {
-	console.error(error);
-}
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export const AddItem = () => {
-	const initialConfig = {
-		theme,
-		onError,
-	};
 	return (
-		<LexicalComposer initialConfig={initialConfig}>
-			<PlainTextPlugin
-				contentEditable={<ContentEditable />}
-				placeholder={<div>Enter some text...</div>}
+		<div>
+			Lägg till nyhet:
+			<CKEditor
+				editor={ ClassicEditor }
+				data=""
+				onReady={ editor => {
+					// You can store the "editor" and use when it is needed.
+					console.log( 'Editor is ready to use!', editor );
+				} }
+				onChange={ ( event, editor ) => {
+					const data = editor.getData();
+					console.log( { event, editor, data } );
+				} }
+				onBlur={ ( event, editor ) => {
+					console.log( 'Blur.', editor );
+				} }
+				onFocus={ ( event, editor ) => {
+					console.log( 'Focus.', editor );
+				} }
 			/>
-			<OnChangePlugin onChange={onChange} />
-		</LexicalComposer>
+		</div>
 	)
 }
 
