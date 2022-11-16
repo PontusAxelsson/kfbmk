@@ -1,13 +1,13 @@
 import { collection, doc } from "firebase/firestore";
 import { firebase } from "../auth/firebase";
-import { useFirestoreQuery } from "../auth/react-query-firebase/firestore";
+import { useFirestoreQuery, useFirestoreCollectionMutation } from "../auth/react-query-firebase/firestore";
 
-const ref = collection(firebase, "news");
+export const newsRef = collection(firebase, "news");
 
 export const queryNews = () => useFirestoreQuery(
 	["news"],
-	ref,
+	newsRef,
 	{ subscribe: true }
 );
 
-export const queryNewsItem = (id: string) => doc(ref, id);
+export const newsItemRef = (id: string) => doc(newsRef, id);

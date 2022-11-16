@@ -29,9 +29,9 @@ export const News = () => {
 	}
 	
 	return (
-		<div>
+		<div>	
 			{query.data.docs.map((doc) =>
-				<NewsItem key={doc.id} id={doc.id}/>
+				<NewsItem key={doc.id} uid={doc.id}/>
 			)}
 			<AddItem />
 		</div>

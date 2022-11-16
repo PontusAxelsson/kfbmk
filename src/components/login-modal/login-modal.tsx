@@ -37,7 +37,7 @@ export const LoginModal = () => {
 					</svg>
 				</a>
 				<div className={`${styles.emailContainer} ${styles.row}`}>
-					<form action="login()">
+					<form>
 						<div className="form-group">
 							<input type="email" name="email" placeholder="E-postadress" />
 							<label htmlFor="email">E-postadress</label>
