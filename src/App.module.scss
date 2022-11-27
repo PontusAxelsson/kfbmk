@@ -1,3 +1,5 @@
+@use './styles/variables' as *;
+
 .App {
 	position: relative;
 }
@@ -5,4 +7,12 @@
 	position: absolute;
 	right: 0;
 	padding: 1em;
+	z-index: 99;
+}
+.main{
+	position: absolute;
+    top: 0;
+	bottom: $navigation-height;
+    overflow: hidden;
+    overflow-y: auto;
 }
