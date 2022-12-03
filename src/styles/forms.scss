@@ -11,6 +11,11 @@ form {
 	margin-top: 0.5em;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+	background-color: red !important;
+}
 
 input {
 	font-family: inherit;

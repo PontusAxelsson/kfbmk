@@ -1,7 +1,8 @@
 import styles from './login-modal.module.scss';
 import create from 'zustand';
-import { signInWithGoogle } from '../../auth/signIn';
+import { signInWithEmail, signInWithGoogle } from '../../auth/signIn';
 import { signOut } from '../../auth/signOut';
+import { BaseSyntheticEvent, useState } from 'react';
 
 export interface LoginModalState {
 	isOpen: boolean;
@@ -19,6 +20,18 @@ export const useLoginModalStore = create<LoginModalState>((set) => ({
 
 export const LoginModal = () => {
 	const closeLoginModal = useLoginModalStore(({ close }) =>close);
+
+	const [ email, setEmail ] = useState<string>();
+	const [ password, setPassword ] = useState<string>();
+
+	const logIn = async (e: BaseSyntheticEvent) => {
+		e.preventDefault();
+		if (!email || !password) return;
+		const signedIn = await signInWithEmail(email, password)
+		if(signedIn) {
+			closeLoginModal()
+		}
+	}
 
 	return (
 		<div className="modal-background" onClick={closeLoginModal} id="modal-background">
@@ -39,11 +52,11 @@ export const LoginModal = () => {
 				<div className={`${styles.emailContainer} ${styles.row}`}>
 					<form>
 						<div className="form-group">
-							<input type="email" name="email" placeholder="E-postadress" />
+							<input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="E-postadress" />
 							<label htmlFor="email">E-postadress</label>
 						</div>
 						<div className="form-group">
-							<input type="password" name="password" placeholder="Lösenord" />
+							<input type="password" onChange={(e)=>setPassword(e.target.value)}  name="password" placeholder="Lösenord" />
 							<label htmlFor="password">Lösenord</label>
 						</div>
 						<button className='btn'>Logga in</button>
