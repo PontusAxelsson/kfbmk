@@ -16,6 +16,11 @@ export const FindHere = () => {
 	return (
 		<div onClick={FindHereStore((state) => state.toogleOpen)}>
 			<Map />
+
+			<p>Klubben bedriver all sin verksamhet i Vikenhallen i Furulund. Hallen är utrustad med fem badmintonbanor och ligger vägg i vägg med Vikenbadet. </p>
+			<p>Viken idrottshall<br></br>
+				Friluftsgatan 6<br></br>
+				244 65 Furulund</p>
 		</div>
 	);
 };
