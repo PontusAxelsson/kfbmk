@@ -14,7 +14,12 @@ const useStore = create<InfoStore>(set => ({
 export const Info = () => {
 	return (
 		<div onClick={useStore((state)=>state.toogleOpen)}>
-			INFO COMPONENT
+			<h5>Träningstider</h5>
+			<p>
+				bla bla bla
+			</p> 
+
+
 		</div>
 	)
 }
