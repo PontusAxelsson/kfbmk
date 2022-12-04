@@ -27,6 +27,31 @@ export const Info = () => {
 			<p> Klubben har två serielag i allsvenska seriesystemet. Träningen i denna gruppen inriktar sig på serielagsspelarna. Gruppen är öppen för alla seniorer som tycker det är kul att spela badminton. Träningen anpassas efter vilka spelare som är på plats. Det finns alltid någon att spela med.</p>
 			<p>Träningstider: Måndagar och Onsdagar 20.00 - 22.00 i Vikenhallen</p>
 
+			<h3>Träningsavgifter</h3>
+			<p>
+			Medlemsavgift per spelsäsong: kr 200:-/person. <br></br>
+			Träningsvgifter för de som spelar i träningsgrupper säsongen 2020/2021.<br></br>
+			</p>
+
+			<table>
+				<tr>
+					<th> Åldersgrupp </th>
+					<th> Avgift </th>
+				</tr>
+				<tr>
+					<td> 7 - 14 år </td>
+					<td> 700 kr </td>
+				</tr>
+				<tr>
+					<td> 15 - 19 år </td>
+					<td> 1300 kr </td>
+				</tr>
+				<tr>
+					<td> 20 år och äldre </td>
+					<td> 1700 kr </td>
+				</tr>
+			</table>	
+
 
 		</div>
 	)
