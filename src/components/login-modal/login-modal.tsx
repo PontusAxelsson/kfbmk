@@ -1,14 +1,14 @@
-import styles from './login-modal.module.scss';
-import create from 'zustand';
-import { signInWithEmail, signInWithGoogle } from '../../auth/signIn';
-import { signOut } from '../../auth/signOut';
-import { BaseSyntheticEvent, useState } from 'react';
+import styles from './login-modal.module.scss'
+import create from 'zustand'
+import { signInWithEmail, signInWithGoogle } from '../../auth/signIn'
+import { signOut } from '../../auth/signOut'
+import { BaseSyntheticEvent, useState } from 'react'
 
 export interface LoginModalState {
-	isOpen: boolean;
-	close: () => void;
-	open: () => void;
-	toogle: () => void;
+	isOpen: boolean
+	close: () => void
+	open: () => void
+	toogle: () => void
 }
 
 export const useLoginModalStore = create<LoginModalState>((set) => ({
@@ -19,26 +19,30 @@ export const useLoginModalStore = create<LoginModalState>((set) => ({
 }))
 
 export const LoginModal = () => {
-	const closeLoginModal = useLoginModalStore(({ close }) =>close);
+	const closeLoginModal = useLoginModalStore(({ close }) => close)
 
-	const [ email, setEmail ] = useState<string>();
-	const [ password, setPassword ] = useState<string>();
+	const [email, setEmail] = useState<string>()
+	const [password, setPassword] = useState<string>()
 
 	const logIn = async (e: BaseSyntheticEvent) => {
-		e.preventDefault();
-		if (!email || !password) return;
+		e.preventDefault()
+		if (!email || !password) return
 		const signedIn = await signInWithEmail(email, password)
-		if(signedIn) {
+		if (signedIn) {
 			closeLoginModal()
 		}
 	}
 
 	return (
-		<div className="modal-background" onClick={closeLoginModal} id="modal-background">
+		<div
+			className="modal-background"
+			onClick={closeLoginModal}
+			id="modal-background"
+		>
 			<div
 				className={`${styles.modalContainer} modal-container`}
-				onClick={(e)=>{
-					e.stopPropagation();
+				onClick={(e) => {
+					e.stopPropagation()
 				}}
 			>
 				<a href="#" onClick={closeLoginModal}>
@@ -52,20 +56,35 @@ export const LoginModal = () => {
 				<div className={`${styles.emailContainer} ${styles.row}`}>
 					<form>
 						<div className="form-group">
-							<input onChange={(e)=>setEmail(e.target.value)} type="email" name="email" placeholder="E-postadress" />
+							<input
+								onChange={(e) => setEmail(e.target.value)}
+								type="email"
+								name="email"
+								placeholder="E-postadress"
+							/>
 							<label htmlFor="email">E-postadress</label>
 						</div>
 						<div className="form-group">
-							<input type="password" onChange={(e)=>setPassword(e.target.value)}  name="password" placeholder="Lösenord" />
+							<input
+								type="password"
+								onChange={(e) => setPassword(e.target.value)}
+								name="password"
+								placeholder="Lösenord"
+							/>
 							<label htmlFor="password">Lösenord</label>
 						</div>
-						<button className='btn'>Logga in</button>
+						<button className="btn">Logga in</button>
 					</form>
 				</div>
 				<div className={`${styles.row}`}>
 					<hr />
-					<button className='btn button-google' onClick={signInWithGoogle}/>
-					<button className='btn' onClick={signOut}>Logga ut</button>
+					<button
+						className="btn button-google"
+						onClick={signInWithGoogle}
+					/>
+					<button className="btn" onClick={signOut}>
+						Logga ut
+					</button>
 				</div>
 			</div>
 		</div>

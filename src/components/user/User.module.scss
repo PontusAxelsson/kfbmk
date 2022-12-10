@@ -4,30 +4,27 @@
 	font-size: 1em;
 	display: flex;
 	align-items: center;
-	padding: .5em .7em;
+	padding: 0.5em 0.7em;
 	border-radius: 1em;
-	background-color: lighten($dark-blue,10%);
+	background-color: lighten($dark-blue, 10%);
 	box-shadow: 0 0 0 0 rgb(0 0 0 / 0);
-	transition: 
-		background-color 200ms ease,
-		font-size 200ms linear,
+	transition: background-color 200ms ease, font-size 200ms linear,
 		box-shadow 200ms ease;
 	cursor: pointer;
 	position: relative;
-	user-select:none
+	user-select: none;
 }
 .user:hover {
-	background-color: lighten($dark-blue,15%);
+	background-color: lighten($dark-blue, 15%);
 	font-size: 1.1em;
 	box-shadow: 5px 4px 8px 1px rgb(0 0 0 / 20%);
 }
-
 
 .userImage {
 	width: 2em;
 	height: 2em;
 	border-radius: 50%;
-	margin-right: .5em;
+	margin-right: 0.5em;
 }
 
 .userMenuContainer {

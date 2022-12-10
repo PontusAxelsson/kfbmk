@@ -6,9 +6,5 @@ export const PageTitle = () => {
 	// 			return meta?.title
 	// 		})
 	// }
-	return (
-		<div>
-			PAGE TITLE
-		</div>
-	)
+	return <div>PAGE TITLE</div>
 }

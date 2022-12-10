@@ -1,12 +1,11 @@
-import { auth } from "./firebase";
+import { auth } from './firebase'
 
 export const signOut = async () => {
 	try {
-        console.log("signout");
-        
+		console.log('signout')
+
 		auth.signOut()
-		
 	} catch (err) {
-		console.error(err);
+		console.error(err)
 	}
-};
+}

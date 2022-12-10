@@ -12,7 +12,7 @@ form {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
 	background-color: red !important;
 }
@@ -24,7 +24,7 @@ input {
 	border-bottom: 2px solid $gray;
 	outline: 0;
 	font-size: 1.3rem;
-	color:  var(--text);
+	color: var(--text);
 	padding: 7px 0;
 	background: transparent;
 	transition: border-color 0.2s;
@@ -35,7 +35,7 @@ input {
 		color: transparent;
 	}
 
-	&:placeholder-shown~label {
+	&:placeholder-shown ~ label {
 		font-size: 1.3rem;
 		cursor: text;
 		top: 20px;
@@ -54,7 +54,7 @@ label {
 }
 
 input:focus {
-	~label {
+	~ label {
 		position: absolute;
 		top: 0;
 		display: block;
@@ -72,7 +72,6 @@ input:focus {
 
 /* reset input */
 input {
-	
 	&:required,
 	&:invalid {
 		box-shadow: none;

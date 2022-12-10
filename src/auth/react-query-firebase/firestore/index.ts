@@ -15,26 +15,26 @@
  *
  */
 
-import { SnapshotListenOptions } from "firebase/firestore";
+import { SnapshotListenOptions } from 'firebase/firestore'
 
-export type GetSnapshotSource = "server" | "cache";
+export type GetSnapshotSource = 'server' | 'cache'
 
 export type GetSnapshotOptions = {
-	source?: GetSnapshotSource;
-};
+	source?: GetSnapshotSource
+}
 
 export type UseFirestoreHookOptions =
 	| ({
-		subscribe: true;
-	} & SnapshotListenOptions)
+			subscribe: true
+	  } & SnapshotListenOptions)
 	| ({
-		subscribe?: false;
-	} & GetSnapshotOptions);
+			subscribe?: false
+	  } & GetSnapshotOptions)
 
 export type WithIdField<D, F = void> = F extends string
 	? D & { [key in F]: string }
-	: D;
+	: D
 
-export * from "./useFirestoreDocument";
-export * from "./useFirestoreQuery";
-export * from "./useFirestoreMutation";
+export * from './useFirestoreDocument'
+export * from './useFirestoreQuery'
+export * from './useFirestoreMutation'

@@ -6,17 +6,17 @@ import {
 	useQuery,
 	UseQueryOptions,
 	UseQueryResult,
-} from "react-query";
+} from 'react-query'
 import {
 	Functions,
 	httpsCallable,
 	HttpsCallableOptions,
-} from "firebase/functions";
+} from 'firebase/functions'
 
 export function useFunctionsQuery<
 	RequestData = any,
 	ResponseData = unknown,
-	ModifiedData = ResponseData
+	ModifiedData = ResponseData,
 >(
 	key: QueryKey,
 	functions: Functions,
@@ -25,8 +25,8 @@ export function useFunctionsQuery<
 	options?: HttpsCallableOptions,
 	useQueryOptions?: Omit<
 		UseQueryOptions<ResponseData, Error, ModifiedData>,
-		"queryFn"
-	>
+		'queryFn'
+	>,
 ): UseQueryResult<ModifiedData, Error> {
 	return useQuery<ResponseData, Error, ModifiedData>({
 		...useQueryOptions,
@@ -35,27 +35,27 @@ export function useFunctionsQuery<
 			const response = await httpsCallable<RequestData, ResponseData>(
 				functions,
 				trigger,
-				options
-			)(data);
+				options,
+			)(data)
 
-			return response.data;
+			return response.data
 		},
-	});
+	})
 }
 
 export function useFunctionsCall<RequestData = any, ResponseData = unknown>(
 	functions: Functions,
 	trigger: string,
 	options?: HttpsCallableOptions,
-	useMutationOptions?: UseMutationOptions<ResponseData, Error, RequestData>
+	useMutationOptions?: UseMutationOptions<ResponseData, Error, RequestData>,
 ): UseMutationResult<ResponseData, Error, RequestData> {
 	return useMutation<ResponseData, Error, RequestData>(async (data) => {
 		const response = await httpsCallable<RequestData, ResponseData>(
 			functions,
 			trigger,
-			options
-		)(data);
+			options,
+		)(data)
 
-		return response.data;
-	}, useMutationOptions);
+		return response.data
+	}, useMutationOptions)
 }

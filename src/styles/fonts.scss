@@ -5,23 +5,22 @@ $baseline: 1.5rem;
 
 $minScreen: 20rem;
 $maxScreen: 50rem;
-$minFont: .8rem;
+$minFont: 0.8rem;
 $maxFont: 2rem;
 
 $h1: 2rem;
 $h2: 1.5rem;
 $h3: 1.25rem;
 $h4: 1rem;
-$h5: .875rem;
-
+$h5: 0.875rem;
 
 html,
 #root,
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 1rem;
@@ -29,7 +28,6 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-    box-sizing: border-box;
-    text-rendering: optimizeLegibility;
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
 }
-
