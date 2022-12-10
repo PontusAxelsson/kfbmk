@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { appendScript } from '../../utils/appendScript'
 import { initMap } from './googleMapInit'
 
 export default function Map() {

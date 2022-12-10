@@ -17,7 +17,7 @@ const Loading = () => <div>...laddar</div>
 const App = () => {
 	const isLoginModalOpen = useLoginModalStore(({ isOpen }) => isOpen)
 	return (
-		<div>
+		<>
 			<div className={styles.loginButton}>
 				<SignInButton />
 			</div>
@@ -53,7 +53,7 @@ const App = () => {
 				</Routes>
 			</div>
 			<Navigation />
-		</div>
+		</>
 	)
 }
 

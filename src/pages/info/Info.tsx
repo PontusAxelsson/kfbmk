@@ -63,22 +63,24 @@ export const Info = () => {
 			</p>
 
 			<table>
-				<tr>
-					<th> Åldersgrupp </th>
-					<th> Avgift </th>
-				</tr>
-				<tr>
-					<td> 7 - 14 år </td>
-					<td> 700 kr </td>
-				</tr>
-				<tr>
-					<td> 15 - 19 år </td>
-					<td> 1300 kr </td>
-				</tr>
-				<tr>
-					<td> 20 år och äldre </td>
-					<td> 1700 kr </td>
-				</tr>
+				<tbody>
+					<tr>
+						<th> Åldersgrupp </th>
+						<th> Avgift </th>
+					</tr>
+					<tr>
+						<td> 7 - 14 år </td>
+						<td> 700 kr </td>
+					</tr>
+					<tr>
+						<td> 15 - 19 år </td>
+						<td> 1300 kr </td>
+					</tr>
+					<tr>
+						<td> 20 år och äldre </td>
+						<td> 1700 kr </td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	)
