@@ -1,8 +1,24 @@
+@use '../../styles/variables' as *;
+
+$imgHeight: calc($header-height - 0.8em);
+$imgWidth: calc($imgHeight * 1.31875);
+
+.header {
+	position: sticky;
+	font-size: 1rem;
+	height: $header-height;
+	background-color: var(--accent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .logo {
-	background-color: yellow;
-	width: 50px;
-	height: 50px;
-	mask-image: url('/klubblogga-mask.png');
-	-webkit-mask-image: url('/klubblogga-mask.png');
-	//NOT WORKING YET WORKING ON IT
+	width: $imgWidth;
+	height: $imgHeight;
+	background-color: var(--bg);
+	-webkit-mask-image: url(/logo-transparent.png);
+	-webkit-mask-size: $imgWidth $imgHeight;
+	mask-image: url(/logo-transparent.png);
+	mask-size: $imgWidth $imgHeight;
 }

@@ -11,19 +11,16 @@
 }
 .main {
 	font-size: 1.2rem;
-	position: absolute;
-	top: 0;
-	bottom: $navigation-height;
 	overflow: hidden;
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
+	height: calc(100vh - $header-height - $navigation-height);
 }
 
 @media only screen and (max-width: 600px) {
 	.main {
 		display: flex;
 		flex-direction: column;
-		padding: 0 2em;
 	}
 }

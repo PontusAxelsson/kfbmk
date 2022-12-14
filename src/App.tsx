@@ -11,6 +11,7 @@ import Info from './pages/info/Info'
 import FindHere from './pages/find/FindHere'
 import { Navigation } from './components/navigation/Navigation'
 import { Suspense } from 'react'
+import { ExtraMargin } from './components/ExtraMargin'
 
 const Loading = () => <div>...laddar</div>
 
@@ -21,9 +22,9 @@ const App = () => {
 			<div className={styles.loginButton}>
 				<SignInButton />
 			</div>
+			<PageTitle />
 			{isLoginModalOpen ? <LoginModal /> : ''}
 			<div className={styles.main}>
-				<PageTitle />
 				<Routes>
 					<Route
 						path="/info"
@@ -51,6 +52,7 @@ const App = () => {
 					/>
 					<Route path="*" element={<Navigate to="/info" replace />} />
 				</Routes>
+				<ExtraMargin />
 			</div>
 			<Navigation />
 		</>

@@ -9,8 +9,8 @@ export const PageTitle = () => {
 	// 		})
 	// }
 	return (
-		<div>
-			<div className={styles.logo}></div>
+		<div className={styles.header}>
+			<div className={styles.logo}>sgf</div>
 		</div>
 	)
 }
