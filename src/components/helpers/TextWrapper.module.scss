@@ -1,0 +1,9 @@
+.TextWrapper {
+	max-width: 550px;
+}
+
+@media only screen and (max-width: 600px) {
+	.TextWrapper {
+		padding: 0 1em;
+	}
+}

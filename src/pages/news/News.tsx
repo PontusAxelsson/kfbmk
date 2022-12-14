@@ -3,6 +3,7 @@ import { queryNews } from '../../services/news'
 import AddItem from './add-item/add-item'
 import { NewsItem } from './item/News_Item'
 import { LoginModal } from '../../components/login-modal/login-modal'
+import { TextWrapper } from '../../components/helpers'
 
 interface NewsStore {
 	userMenuOpen: boolean
@@ -28,12 +29,15 @@ export const News = () => {
 	}
 
 	return (
-		<div>
+		<>
 			{query.data.docs.map((doc) => (
-				<NewsItem key={doc.id} uid={doc.id} />
+				<TextWrapper>
+					<h2>Nyheter</h2>
+					<NewsItem key={doc.id} uid={doc.id} />
+				</TextWrapper>
 			))}
 			<AddItem />
-		</div>
+		</>
 	)
 }
 

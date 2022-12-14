@@ -15,15 +15,15 @@ export const NewsItem = (params: { uid: string }) => {
 
 	const snapshot = query.data.data()
 	return (
-		<div>
+		<>
 			<div>
-				<div className="title">{snapshot?.title}</div>
-				<div className="date"></div>
+				<h4 className="title">{snapshot?.title}</h4>
+				{/* <div className="date">{JSON.stringify(snapshot?.created)}</div> */}
 			</div>
 			<div
 				className="news-text"
 				dangerouslySetInnerHTML={{ __html: snapshot?.text }}
 			></div>
-		</div>
+		</>
 	)
 }

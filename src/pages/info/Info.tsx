@@ -1,22 +1,13 @@
 import create from 'zustand'
-import { PageTitle } from '../../components/page_title/PageTitle'
-
-interface InfoStore {
-	userMenuOpen: boolean
-	toogleOpen: () => void
-}
-
-const useStore = create<InfoStore>((set) => ({
-	userMenuOpen: false,
-	toogleOpen: () => set((state) => ({ userMenuOpen: !state.userMenuOpen })),
-}))
+import { TextWrapper } from '../../components/helpers'
 
 export const Info = () => {
 	return (
-		<div onClick={useStore((state) => state.toogleOpen)}>
-			<h2>Välkommen till Kävling Furulund Badmintonklubb</h2>
+		<TextWrapper>
+			<h2>Välkommen till Kävlinge-Furulund Badmintonklubb</h2>
+			<hr />
 			<h3>Träningsgrupper</h3>
-			<h5>Nybörjargrupp</h5>
+			<h4>Nybörjargrupp</h4>
 			<p>
 				Alla barn och ungdomar som vill börja spela badminton börjar i
 				nybörjargruppen. Här lär vi oss grunderna i badminton på ett
@@ -26,7 +17,7 @@ export const Info = () => {
 				Träningstider: Måndagar och Onsdagar 18.00 - 19.00 i Vikenhallen
 			</p>
 
-			<h5> Fortsättningsgrupp</h5>
+			<h4>Fortsättningsgrupp</h4>
 			<p>
 				När man är motiverad att lära sig mer om badminton blir
 				nybörjargruppen för enkel. I fortsättningsgruppen är nivån högre
@@ -38,7 +29,7 @@ export const Info = () => {
 				Träningstider: Måndagar och Onsdagar 19.00 - 20.00 i Vikenhallen
 			</p>
 
-			<h5> Serielag/Senior/Motionär</h5>
+			<h4>Serielag/Senior/Motionär</h4>
 			<p>
 				Klubben har två serielag i allsvenska seriesystemet. Träningen i
 				denna gruppen inriktar sig på serielagsspelarna. Gruppen är
@@ -49,36 +40,36 @@ export const Info = () => {
 			<p>
 				Träningstider: Måndagar och Onsdagar 20.00 - 22.00 i Vikenhallen
 			</p>
-
+			<br />
+			<hr />
 			<h3>Träningsavgifter</h3>
+			<p>Medlemsavgift per spelsäsong: 200:-/person.</p>
 			<p>
-				Medlemsavgift per spelsäsong: kr 200:-/person. <br></br>
 				Träningsvgifter för de som spelar i träningsgrupper säsongen
 				2020/2021.
-				<br></br>
 			</p>
 
 			<table>
 				<tbody>
 					<tr>
-						<th> Åldersgrupp </th>
-						<th> Avgift </th>
+						<th>Åldersgrupp</th>
+						<th>Avgift</th>
 					</tr>
 					<tr>
-						<td> 7 - 14 år </td>
-						<td> 700 kr </td>
+						<td>7 - 14 år</td>
+						<td>700 kr</td>
 					</tr>
 					<tr>
-						<td> 15 - 19 år </td>
-						<td> 1300 kr </td>
+						<td>15 - 19 år</td>
+						<td>1300 kr</td>
 					</tr>
 					<tr>
-						<td> 20 år och äldre </td>
-						<td> 1700 kr </td>
+						<td>20 år och äldre</td>
+						<td>1700 kr</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</TextWrapper>
 	)
 }
 
