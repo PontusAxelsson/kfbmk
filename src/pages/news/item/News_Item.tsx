@@ -1,19 +1,27 @@
-import { auth } from '../../../auth/firebase'
-import { useFirestoreDocument } from '../../../auth/react-query-firebase/firestore'
-import { newsItemRef, newsRef, queryNewsItem } from '../../../services/news'
+import {
+	useFirestoreDocument,
+	useFirestoreDocumentData,
+} from '@react-query-firebase/firestore'
+import { collection, doc } from 'firebase/firestore'
+import { firebase } from '../../../auth/firebase'
+import { newsItemRef } from '../../../services/news'
 
-export const NewsItem = (params: { uid: string }) => {
-	const ref = newsItemRef(params.uid)
-	const query = useFirestoreDocument(['news', params.uid], ref)
+export const NewsItem = ({ uid }: { uid: string }) => {
+	const collectionRef = collection(firebase, 'news')
+	const ref = doc(collectionRef, uid)
+	const { data, isLoading } = useFirestoreDocument(['news', uid], ref, {
+		subscribe: true,
+		includeMetadataChanges: true,
+	})
 
-	if (query.isLoading) {
+	if (isLoading) {
 		return <div>Laddar...</div>
 	}
-	if (!query.data?.data()) {
+	if (!data?.data()) {
 		return <div>Kunde inte ladda nyheter.</div>
 	}
 
-	const snapshot = query.data.data()
+	const snapshot = data.data()
 	return (
 		<>
 			<div>

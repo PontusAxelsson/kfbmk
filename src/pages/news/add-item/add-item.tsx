@@ -1,10 +1,10 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { newsRef } from '../../../services/news'
-import { useFirestoreCollectionMutation } from '../../../auth/react-query-firebase/firestore'
-import { useAuthUser } from '../../../auth/react-query-firebase/auth'
 import { auth } from '../../../auth/firebase'
+import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
+import { useAuthUser } from '@react-query-firebase/auth'
 
 export const AddItem = () => {
 	const [title, setTitle] = useState<string>('')
@@ -21,6 +21,9 @@ export const AddItem = () => {
 			text: itemData,
 			title,
 		})
+	}
+	if (!user.data) {
+		return <></>
 	}
 	return (
 		<form onSubmit={addNewsItem}>

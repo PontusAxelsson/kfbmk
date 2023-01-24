@@ -7,6 +7,10 @@ import './styles/index.scss'
 
 const queryClient = new QueryClient()
 
+window.initMap = () => {
+	console.log('loaded map')
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>

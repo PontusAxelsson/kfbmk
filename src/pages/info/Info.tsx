@@ -1,4 +1,3 @@
-import create from 'zustand'
 import { TextWrapper } from '../../components/helpers'
 
 export const Info = () => {
@@ -13,9 +12,8 @@ export const Info = () => {
 				nybörjargruppen. Här lär vi oss grunderna i badminton på ett
 				lekfullt sätt samtidigt som vi tränar mycket koordination.
 			</p>
-			<p>
-				Träningstider: Måndagar och Onsdagar 18.00 - 19.00 i Vikenhallen
-			</p>
+			<h5>Träningstider:</h5>
+			<p>Måndagar och Onsdagar 18.00 - 19.00 i Vikenhallen</p>
 
 			<h4>Fortsättningsgrupp</h4>
 			<p>
@@ -25,9 +23,8 @@ export const Info = () => {
 				åker ut och tävlar eller provar på att spela i serielaget med
 				seniorerna.
 			</p>
-			<p>
-				Träningstider: Måndagar och Onsdagar 19.00 - 20.00 i Vikenhallen
-			</p>
+			<h5>Träningstider:</h5>
+			<p>Måndagar och Onsdagar 19.00 - 20.00 i Vikenhallen</p>
 
 			<h4>Serielag/Senior/Motionär</h4>
 			<p>
@@ -37,10 +34,8 @@ export const Info = () => {
 				badminton. Träningen anpassas efter vilka spelare som är på
 				plats. Det finns alltid någon att spela med.
 			</p>
-			<p>
-				Träningstider: Måndagar och Onsdagar 20.00 - 22.00 i Vikenhallen
-			</p>
-			<br />
+			<h5>Träningstider:</h5>
+			<p>Måndagar och Onsdagar 20.00 - 22.00 i Vikenhallen</p>
 			<hr />
 			<h3>Träningsavgifter</h3>
 			<p>Medlemsavgift per spelsäsong: 200:-/person.</p>

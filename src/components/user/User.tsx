@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { auth } from '../../auth/firebase'
-import { useAuthUser } from '../../auth/react-query-firebase/auth'
 import create from 'zustand'
 import styles from './User.module.scss'
 import { PageTitle } from '../page_title/PageTitle'
+import { useAuthUser } from '@react-query-firebase/auth'
 
 interface UserStore {
 	userMenuOpen: boolean
