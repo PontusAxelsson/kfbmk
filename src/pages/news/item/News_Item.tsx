@@ -26,7 +26,18 @@ export const NewsItem = ({ uid }: { uid: string }) => {
 		<>
 			<div>
 				<h4 className="title">{snapshot?.title}</h4>
-				{/* <div className="date">{JSON.stringify(snapshot?.created)}</div> */}
+				<h5 className="date">
+					{new Date(snapshot?.created.seconds * 1000).toLocaleString(
+						[],
+						{
+							day: 'numeric',
+							month: 'numeric',
+							year: 'numeric',
+							hour: '2-digit',
+							minute: '2-digit',
+						},
+					)}
+				</h5>
 			</div>
 			<div
 				className="news-text"

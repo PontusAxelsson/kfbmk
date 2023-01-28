@@ -28,24 +28,28 @@ export const signInWithEmail = async () => {
 	}
 }
 
+export const getUserById = async (uid: string) =>{
+	const q = query(
+		collection(firebase, 'users'),
+		where('uid', '==', uid),
+	)
+	return await getDocs(q)
+}
+
 export const signInWithGoogle = async () => {
 	try {
 		const res = await signInWithPopup(auth, googleProvider)
 		console.log('result', res)
 
 		const user = res.user
-		const q = query(
-			collection(firebase, 'users'),
-			where('uid', '==', user.uid),
-		)
-		console.log('DOCS', user)
-		const docs = await getDocs(q)
+
+		const docs = await getUserById(user.uid)
 		if (docs.docs.length === 0) {
 			await addDoc(collection(firebase, 'users'), {
 				uid: user.uid,
 				name: user.displayName,
 				authProvider: 'google',
-				email: user.email,
+				email: user.email
 			})
 		}
 		const token = await getIdTokenResult(user)
