@@ -3,7 +3,7 @@ import { useQueryNews } from '../../services/news'
 import AddItem from './add-item/add-item'
 import { NewsItem } from './item/News_Item'
 import { TextWrapper } from '../../components/helpers'
-import { collection } from 'firebase/firestore'
+import { collection, limit, orderBy, query } from 'firebase/firestore'
 import { firebase } from '../../auth/firebase'
 import { useFirestoreQuery } from '@react-query-firebase/firestore'
 
@@ -18,7 +18,12 @@ const userStore = create<NewsStore>((set) => ({
 }))
 
 export const News = () => {
-	const newsRef = collection(firebase, 'news')
+	// const newsRef = collection(firebase, 'news')
+	const newsRef = query(
+		collection(firebase, 'news'),
+		limit(6),
+		orderBy('created', 'desc'),
+	)
 	const { data, isLoading } = useFirestoreQuery(['news'], newsRef, {
 		subscribe: true,
 	})
@@ -36,9 +41,9 @@ export const News = () => {
 
 	return (
 		<TextWrapper>
+			<h2>Nyheter</h2>
 			{data.docs.map((doc) => (
 				<div key={doc.id}>
-					<h2>Nyheter</h2>
 					<NewsItem uid={doc.id} />
 				</div>
 			))}

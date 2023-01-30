@@ -5,6 +5,12 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles/index.scss'
 
+declare global {
+	interface Window {
+		initMap: () => void
+	}
+}
+
 const queryClient = new QueryClient()
 
 window.initMap = () => {

@@ -1,4 +1,4 @@
-import { SignInButton } from './components/signin/SignInButton'
+import { SignInOutButton } from './components/signin/SignInButton'
 import { PageTitle } from './components/page_title/PageTitle'
 import styles from './App.module.scss'
 import {
@@ -20,7 +20,7 @@ const App = () => {
 	return (
 		<>
 			<div className={styles.loginButton}>
-				<SignInButton />
+				<SignInOutButton />
 			</div>
 			<PageTitle />
 			{isLoginModalOpen ? <LoginModal /> : ''}

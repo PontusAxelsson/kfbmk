@@ -7,7 +7,6 @@ export default function Map() {
 		if (mapContainer) {
 			initMap(mapContainer)
 		}
-		console.log('skdjflasdjn')
 	}, [])
 
 	return (

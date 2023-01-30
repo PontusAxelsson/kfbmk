@@ -1,8 +1,9 @@
 import styles from './login-modal.module.scss'
 import create from 'zustand'
-import { signInWithEmail, signInWithGoogle } from '../../auth/signIn'
-import { signOut } from '../../auth/signOut'
-import { BaseSyntheticEvent, useState } from 'react'
+import { signInWithGoogle } from '../../auth/signIn'
+import { useState } from 'react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../auth/firebase'
 
 export interface LoginModalState {
 	isOpen: boolean
@@ -24,12 +25,14 @@ export const LoginModal = () => {
 	const [email, setEmail] = useState<string>()
 	const [password, setPassword] = useState<string>()
 
-	const logIn = async (e: BaseSyntheticEvent) => {
-		e.preventDefault()
-		if (!email || !password) return
-		const signedIn = await signInWithEmail(email, password)
-		if (signedIn) {
-			closeLoginModal()
+	const clickEmailSignIn = async () => {
+		if (email && password) {
+			const signedIn = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password,
+			)
+			console.log(signedIn)
 		}
 	}
 
@@ -54,27 +57,27 @@ export const LoginModal = () => {
 					</svg>
 				</a>
 				<div className={`${styles.emailContainer} ${styles.row}`}>
-					<form>
-						<div className="form-group">
-							<input
-								onChange={(e) => setEmail(e.target.value)}
-								type="email"
-								name="email"
-								placeholder="E-postadress"
-							/>
-							<label htmlFor="email">E-postadress</label>
-						</div>
-						<div className="form-group">
-							<input
-								type="password"
-								onChange={(e) => setPassword(e.target.value)}
-								name="password"
-								placeholder="Lösenord"
-							/>
-							<label htmlFor="password">Lösenord</label>
-						</div>
-						<button className="btn">Logga in</button>
-					</form>
+					<div className="form-group">
+						<input
+							onChange={(e) => setEmail(e.target.value)}
+							type="email"
+							name="email"
+							placeholder="E-postadress"
+						/>
+						<label htmlFor="email">E-postadress</label>
+					</div>
+					<div className="form-group">
+						<input
+							type="password"
+							onChange={(e) => setPassword(e.target.value)}
+							name="password"
+							placeholder="Lösenord"
+						/>
+						<label htmlFor="password">Lösenord</label>
+					</div>
+					<button onClick={clickEmailSignIn} className="btn">
+						Logga in
+					</button>
 				</div>
 				<div className={`${styles.row}`}>
 					<hr />
@@ -82,9 +85,6 @@ export const LoginModal = () => {
 						className="btn button-google"
 						onClick={signInWithGoogle}
 					/>
-					<button className="btn" onClick={signOut}>
-						Logga ut
-					</button>
 				</div>
 			</div>
 		</div>
