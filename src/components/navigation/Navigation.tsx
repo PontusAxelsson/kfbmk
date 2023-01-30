@@ -3,7 +3,6 @@ import styles from './Navigation.module.scss'
 import NewsPaper from './icons/newspaper'
 import Shuttle from './icons/shuttle'
 import MapLocation from './icons/map-location'
-import { SignInButton } from '../signin/SignInButton'
 
 export const Navigation = () => {
 	const paths = [

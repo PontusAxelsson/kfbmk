@@ -15,16 +15,28 @@
 	--extra-margin: 2em;
 }
 
+@media only screen and (max-width: 600px) {
+	:root {
+		--extra-margin: 5em;
+	}
+}
+
 body {
 	color: var(--text);
 	background: var(--bg);
+	min-height: 100vh;
+	/* mobile viewport bug fix */
+	min-height: -webkit-fill-available;
+}
+
+html {
+	height: -webkit-fill-available;
 }
 
 /* Presentation */
 body {
 	display: grid;
 	place-items: center;
-	min-height: 100vh;
 }
 
 main {

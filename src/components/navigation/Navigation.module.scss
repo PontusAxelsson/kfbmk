@@ -1,11 +1,14 @@
 @use '../../styles/variables' as *;
 
 .navigation:global(.navigation) {
+	position: absolute;
+	bottom: 0px;
 	font-size: 1rem;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 	gap: 0.5em;
+	z-index: 5;
 }
 .navbar {
 	background-color: $yellow;
