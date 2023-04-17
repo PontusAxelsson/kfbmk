@@ -1,6 +1,6 @@
-import { getIdTokenResult, signInWithPopup } from 'firebase/auth'
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
-import { auth, googleProvider, emailAuthProvider, firebase } from './firebase'
+import { signInWithPopup } from 'firebase/auth'
+import { setDoc,collection, getDocs, query, where, doc, getDoc } from 'firebase/firestore'
+import { auth, googleProvider, firebase } from './firebase'
 
 // export const signInWithEmail = async () => {
 // 	try {
@@ -25,27 +25,24 @@ import { auth, googleProvider, emailAuthProvider, firebase } from './firebase'
 // 	}
 // }
 
-export const getUserById = async (uid: string) =>{
-	const q = query(
-		collection(firebase, 'users'),
-		where('uid', '==', uid),
-	)
-	return await getDocs(q)
-}
+export const getUserById = async (uid: string) => await getDoc(doc(firebase, "users", uid));
 
 export const signInWithGoogle = async () => {
 	try {
 		const res = await signInWithPopup(auth, googleProvider)
 		const user = res.user
 
-		const docs = await getUserById(user.uid)
-		if (docs.docs.length === 0) {
-			await addDoc(collection(firebase, 'users'), {
-				uid: user.uid,
-				name: user.displayName,
-				authProvider: 'google',
-				email: user.email
-			})
+		const refUserDoc = doc(firebase, "users", user.uid)
+		const userDoc = await getDoc(refUserDoc);
+		if (!userDoc) {
+			await setDoc(refUserDoc,
+				{
+					name: user.displayName,
+					authProvider: 'google',
+					email: user.email,
+					role: 'user'
+				}
+			)
 		}
 	} catch (err) {
 		console.error(err)

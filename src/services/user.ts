@@ -1,6 +1,7 @@
-import { DocumentData, DocumentReference, getDoc } from "firebase/firestore"
+import { DocumentData, DocumentReference, doc, getDoc } from "firebase/firestore"
 import { useState } from "react"
 import { getUserById } from "../auth/signIn"
+import { firebase } from "../auth/firebase"
 
 interface Role {
 	add: boolean
@@ -10,41 +11,45 @@ interface Role {
 	update: boolean
 }
 
-export const isAddAllowed = (roles: Role[]): boolean => roles.some((role) => role.add === true)
-export const isDeleteAllowed = (roles: Role[]): boolean => roles.some((role) => role.delete === true)
-export const isUpdateAllowed = (roles: Role[]): boolean => roles.some((role) => role.update === true)
-export const isCommentAllowed = (roles: Role[]): boolean => roles.some((role) => role.comment === true)
 
 export const useFirebaseUser = (uid: string | undefined) => {
 	const [userData, setUserData] = useState<DocumentData | undefined>()
-	const [userRoles, setRoles] = useState<Role[]>([])
+	const [userRole, setRole] = useState<Role>({
+		add: false,
+		comment: false,
+		delete: false,
+		name: 'user',
+		update: false,
+	})
 	const [isLoading, setIsLoading] = useState(false)
 	const [isLoaded, setIsLoaded] = useState(false)
-	if (uid && !isLoaded) {
-		async function queryUserDoc() {
-			try {
-				const docs = await getUserById(uid!)
-				const userDoc = docs.docs[0]
-				const roles = await userDoc.data().roles
-				setRoles([])
-				roles.forEach(async (roleRef: DocumentReference) => {
-					const role = (await (await getDoc(roleRef)).data()) as Role
-					setRoles([...userRoles, role])
-				})
 
-				setUserData(userDoc.data())
-				setIsLoaded(true)
-				setIsLoading(false)
-			} catch (error) {
-				setIsLoaded(true)
-				setIsLoading(false)
-			}
+	async function queryUserDoc(uid: string) {
+		try {
+			const userDoc = await getUserById(uid)
+			const data = await userDoc.data()
+			const role: string = data?.role
+			
+			setRole(
+				(await getDoc(doc(firebase, "roles", role))).data() as Role
+			)
+
+			setUserData(userDoc.data())
+			setIsLoaded(true)
+			setIsLoading(false)
+		} catch (error) {
+			setIsLoaded(true)
+			setIsLoading(false)
 		}
-		queryUserDoc()
 	}
+
+	if (uid && !isLoaded) {
+		queryUserDoc(uid)
+	}
+
 	return {
 		userData,
-		userRoles,
+		userRole,
 		isLoading,
 		isLoaded,
 	}

@@ -3,12 +3,12 @@ import { newsRef } from '../../../services/news'
 import { auth } from '../../../auth/firebase'
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
 import { useAuthUser } from '@react-query-firebase/auth'
-import { isAddAllowed, useFirebaseUser } from '../../../services/user'
+import { useFirebaseUser } from '../../../services/user'
 
 export const AddItem = () => {
 	const user = useAuthUser('AuthUser', auth)
 	const mutationNews = useFirestoreCollectionMutation(newsRef)
-	const { userRoles } = useFirebaseUser(user.data?.uid)
+	const { userRole } = useFirebaseUser(user.data?.uid)
 
 	const [title, setTitle] = useState<string>('')
 	const [itemData, setItemData] = useState<string>('')
@@ -24,7 +24,7 @@ export const AddItem = () => {
 		})
 	}
 
-	if (!isAddAllowed(userRoles)) {
+	if (!userRole.add) {
 		return <></>
 	}
 	return (

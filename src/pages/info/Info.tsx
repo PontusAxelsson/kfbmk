@@ -41,7 +41,7 @@ export const Info = () => {
 			<p>Medlemsavgift per spelsäsong: 200:-/person.</p>
 			<p>
 				Träningsvgifter för de som spelar i träningsgrupper säsongen
-				2020/2021.
+				2022/2023.
 			</p>
 
 			<table>
